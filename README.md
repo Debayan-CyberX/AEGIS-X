@@ -30,7 +30,7 @@ flowchart LR
   API -->|Authenticated WebSocket| UI
 ```
 
-Frontend: Next.js 15, TypeScript, Tailwind 4, Framer Motion, Lucide, Recharts, React Flow, TanStack Query, Zustand. Backend: Python 3.12, FastAPI, SQLAlchemy, Pydantic, Alembic, ReportLab. PostgreSQL 16 through Compose; SQLite is the zero-service local development option. Components are custom; shadcn/ui and Three.js are not included. The core visual uses lightweight CSS and SVG.
+Frontend: Next.js 15, TypeScript, Tailwind 4, Framer Motion, Lucide, Recharts, React Flow, TanStack Query, Zustand. Backend: Python 3.12, FastAPI, SQLAlchemy, Pydantic, Alembic, ReportLab. PostgreSQL 16 through Compose; SQLite is the zero-service local development option. Components are custom; shadcn/ui and Three.js are not included. The redesigned core visual uses lazy-loaded procedural Three.js geometry with a static SVG fallback, local Geist typography, and a monochrome/acid-lime system. See [the visual redesign notes](docs/DESIGN_REINVENTION.md) for interactions, performance controls, and verification.
 
 ## Windows quick start: Docker Desktop
 

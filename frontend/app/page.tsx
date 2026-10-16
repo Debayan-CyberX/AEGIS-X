@@ -1,17 +1,426 @@
 "use client";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import {useState} from "react";
-import {motion} from "framer-motion";
-import {ArrowUpRight,ArrowRight,ShieldCheck,Activity,ScanLine,BrainCircuit,Network,Layers,ChevronRight,Terminal,LockKeyhole} from "lucide-react";
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Brand from "@/components/brand";
-const stages=["Initial access","Detection","Investigation","Correlation","Containment","Recovery"];
-const descriptions=["Synthetic authentication activity enters the normalized event pipeline.","Deterministic rules correlate repeated failures in a five-minute window.","Retrieve stored evidence, affected assets, and MITRE ATT&CK context.","Connect source IPs, account activity, and successful authentication.","An analyst approves a simulated defensive response. No real devices are changed.","Document findings, resolve the incident, and download an evidence-based report."];
-export default function Home(){const[stage,setStage]=useState(1);return <main className="landing"><nav className="landing-nav wrap"><Brand/><div className="nav-links"><a href="#platform">Platform</a><a href="#intelligence">Intelligence</a><a href="#architecture">Architecture</a><a href="https://github.com/Debayan-CyberX/AEGIS-X">GitHub <ArrowUpRight size={12}/></a></div><Link className="button small outline" href="/console">Command center <ArrowUpRight size={14}/></Link></nav>
-<section className="hero wrap"><motion.div initial={{opacity:0,y:25}} animate={{opacity:1,y:0}} transition={{duration:.8}} className="hero-copy"><div className="eyebrow"><span className="live-dot"/> THE NEXT GENERATION OF CYBER DEFENSE</div><h1>Your network.<br/>Our intelligence.<br/><span className="gradient-text">Zero blind spots.</span></h1><p>Meet AEGIS-X. Your intelligent command center for detecting threats, connecting the evidence, and orchestrating a confident response.</p><div className="hero-actions"><Link className="button" href="/console">Launch command center <ArrowUpRight size={17}/></Link><Link className="button ghost" href="/console?demo=1"><span className="play">▷</span> Experience live simulation</Link></div><div className="hero-proof"><ShieldCheck size={15}/> Evidence-driven detection <span>·</span> Human-approved response</div></motion.div>
-<motion.div initial={{opacity:0,scale:.9}} animate={{opacity:1,scale:1}} transition={{duration:1}} className="core-scene" aria-label="Animated decorative security core"><div className="core-grid"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><div className="core-cross horizontal"/><div className="core-cross vertical"/><div className="security-core"><ShieldCheck size={82} strokeWidth={.8}/></div><span className="core-node n1"/><span className="core-node n2"/><span className="core-node n3"/><div className="core-label label-one"><span className="live-dot"/> DETECTION ENGINE <b>ACTIVE</b></div><div className="core-label label-two"><BrainCircuit size={16}/> AEGIS INTELLIGENCE <b>EVIDENCE FIRST</b></div><div className="core-coordinates">AX / DEFENSE CORE<br/>SYNTHETIC TELEMETRY VISUALIZATION</div><div className="terminal"><div><Terminal size={13}/> aegis.pipeline <span>SIMULATED PREVIEW</span></div><p><i>19:42:01</i> telemetry pipeline initialized</p><p><i>19:42:02</i> <em>8 detection rules loaded</em></p><p><i>19:42:03</i> correlation engine <em>ready</em><span className="cursor"> ▌</span></p></div></motion.div></section>
-<div className="status-strip wrap"><span><i/> Monitoring pipeline ready</span><span><i/> Deterministic analyst available</span><span><i/> 8 detection rules</span><span><i/> Simulated response engine</span></div>
-<section className="section wrap" id="platform"><div className="section-top"><div><div className="eyebrow">01 / YOUR SECURITY, IN FOCUS</div><h2>Complex threats.<br/><span className="muted">One clear picture.</span></h2></div><p>From the first signal to the final response.<br/>Everything your investigation needs, connected.</p></div><div className="preview"><div className="preview-top"><span><Activity size={16}/> Security operations overview</span><span className="tag">INTERACTIVE DEMO PREVIEW</span></div><div className="preview-body"><div className="preview-side"><ShieldCheck className="cyan"/><span className="active">Command center</span><span>Threat intelligence</span><span>Incidents</span><span>Network topology</span></div><div className="preview-content"><div className="preview-metrics"><div><small>DETECTION ENGINE</small><strong>8 <em>rules</em></strong><span>Deterministic correlation</span></div><div><small>FICTIONAL ENTERPRISE</small><strong>6 <em>assets</em></strong><span>AgriShield environment</span></div><div><small>RESPONSE MODE</small><strong className="cyan">Approval</strong><span>You stay in control</span></div></div><div className="preview-chart"><div className="chart-grid"/><svg viewBox="0 0 700 120" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#00e5ff" stopOpacity=".25"/><stop offset="1" stopColor="#00e5ff" stopOpacity="0"/></linearGradient></defs><path d="M0 100 25 90 50 95 75 65 100 80 125 75 150 90 175 80 200 83 225 40 250 65 275 50 300 75 325 70 350 75 375 50 400 60 425 30 450 50 475 43 500 55 525 15 550 40 575 28 600 40 625 20 650 35 675 10 700 20V120H0Z" fill="url(#fill)"/><path d="M0 100 25 90 50 95 75 65 100 80 125 75 150 90 175 80 200 83 225 40 250 65 275 50 300 75 325 70 350 75 375 50 400 60 425 30 450 50 475 43 500 55 525 15 550 40 575 28 600 40 625 20 650 35 675 10 700 20" stroke="#00e5ff" strokeWidth="2" fill="none"/></svg><span>Illustrative activity · launch the demo for stored telemetry</span></div><Link className="preview-launch" href="/console?demo=1"><span className="live-dot"/> Run the AgriShield attack simulation <ArrowRight size={16}/></Link></div></div></div></section>
-<section className="section wrap" id="intelligence"><div className="eyebrow">02 / INTELLIGENCE IN ACTION</div><h2>Built for the moments<br/><span className="muted">that matter most.</span></h2><div className="feature-grid">{[[ScanLine,"See the signal.","Deterministic detection","Sliding-window correlation separates suspicious patterns from individual events."],[BrainCircuit,"Connect the evidence.","AEGIS Intelligence","Evidence-grounded investigations with local summaries and optional server-side AI."],[ShieldCheck,"Respond with confidence.","Auditable orchestration","Human-approved playbooks, simulated containment, and a complete response history."],[Network,"Understand your network.","Connected investigations","Explore your assets, their events, and the incidents that connect them."],[Layers,"Prioritize the risk.","Vulnerability intelligence","Import CVE findings, review CVSS scores, and track remediation to verification."],[Activity,"Turn data into clarity.","Security analytics","Understand event trends and rule activity from actual stored records."]].map(([Icon,title,subtitle,body],i)=>{const I=Icon as typeof Activity;return <motion.article initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i%3*.1}} className="feature" key={String(title)}><div className="feature-art"><I size={43} strokeWidth={1}/><span>AX / 0{i+1}</span></div><small>{String(subtitle)}</small><h3>{String(title)}</h3><p>{String(body)}</p></motion.article>})}</div></section>
-<section className="section wrap"><div className="eyebrow">03 / FROM SIGNAL TO RESOLUTION</div><h2>Every stage. <span className="muted">Connected.</span></h2><div className="lifecycle">{stages.map((s,i)=><button className={stage===i?"selected":""} key={s} onClick={()=>setStage(i)}><small>0{i+1}</small>{s}<ChevronRight size={15}/></button>)}</div><div className="stage-detail"><span className="cyan">0{stage+1} / {stages[stage]}</span><p>{descriptions[stage]}</p></div></section>
-<section className="section wrap" id="architecture"><div className="eyebrow">04 / ENGINEERED FOR TRUST</div><h2>Deterministic at the core.<br/><span className="muted">Intelligent by design.</span></h2><div className="architecture">{["Endpoints","Telemetry pipeline","Detection engine","AI analyst","Response orchestrator","SOC dashboard"].map((s,i)=><div key={s}><span>0{i+1}</span><Layers size={23}/><strong>{s}</strong>{i<5&&<ArrowRight size={16}/>}</div>)}</div><p className="architecture-note"><LockKeyhole size={15}/> Rules detect. AI explains. Analysts approve. The language model never executes commands or controls your infrastructure.</p></section>
-<section className="final-cta wrap"><div className="eyebrow">INTELLIGENCE BEYOND THREATS.</div><h2>Your next move.<br/><span className="gradient-text">Already informed.</span></h2><Link href="/console" className="button">Enter AEGIS-X <ArrowUpRight size={17}/></Link></section><footer className="wrap"><Brand/><span>Built for evidence. Designed for defenders.</span><a href="https://github.com/Debayan-CyberX/AEGIS-X">Source & documentation <ArrowUpRight size={14}/></a></footer></main>}
+import CoreFallback from "@/components/core-fallback";
+import MagneticLink from "@/components/magnetic-link";
+import LiveLab from "@/components/live-lab";
+const AegisCore = dynamic(() => import("@/components/aegis-core"), {
+  ssr: false,
+  loading: () => (
+    <div className="artifact">
+      <CoreFallback />
+    </div>
+  ),
+});
+const system = [
+  [
+    "Telemetry",
+    "Every observation has an origin.",
+    "Validated security events enter a normalized pipeline with timestamps, hostnames, source addresses, and explicit synthetic markers.",
+  ],
+  [
+    "Detection",
+    "Rules, before interpretation.",
+    "Eight deterministic rules inspect five-minute windows. Detection runs independently of any language model.",
+  ],
+  [
+    "Correlation",
+    "Context changes everything.",
+    "Source, destination, identity, and time connect individual observations to evidence-linked incidents.",
+  ],
+  [
+    "Investigation",
+    "An explanation you can inspect.",
+    "Constrained retrieval supplies actual event records. Local summaries or optional AI explain the evidence without executing commands.",
+  ],
+  [
+    "Response",
+    "Deliberate action. Full accountability.",
+    "An analyst approves a local or simulated playbook. Every action is persisted in the security audit trail.",
+  ],
+];
+export default function Home() {
+  const [node, setNode] = useState(0);
+  const [menu, setMenu] = useState(false);
+  return (
+    <main className="landing">
+      <a className="skip-link" href="#product">
+        Skip to product
+      </a>
+      <nav className="landing-nav">
+        <Brand />
+        <div className={`nav-links ${menu ? "visible" : ""}`}>
+          <a href="#product" onClick={() => setMenu(false)}>
+            Product
+          </a>
+          <a href="#simulation" onClick={() => setMenu(false)}>
+            Platform
+          </a>
+          <a href="#architecture" onClick={() => setMenu(false)}>
+            Architecture
+          </a>
+          <a href="https://github.com/Debayan-CyberX/AEGIS-X#readme">
+            Documentation{" "}
+            <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+          </a>
+        </div>
+        <Link className="button outline nav-enter" href="/console">
+          ENTER PLATFORM{" "}
+          <span>
+            <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+          </span>
+        </Link>
+        <button
+          className="landing-menu"
+          aria-label="Toggle site navigation"
+          aria-expanded={menu}
+          onClick={() => setMenu(!menu)}
+        >
+          {menu ? "CLOSE" : "MENU"} <span>{menu ? "−" : "＋"}</span>
+        </button>
+      </nav>
+      <div className="core-narrative" id="product">
+        <div className="core-stage">
+          <AegisCore />
+        </div>
+        <div className="narrative-content">
+          <section className="hero">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.45 }}
+              className="eyebrow"
+            >
+              <span className="live-dot" /> AUTONOMOUS SECURITY INFRASTRUCTURE
+            </motion.div>
+            <h1>
+              <motion.span
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                THE ART OF
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.22 }}
+              >
+                STAYING
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.34 }}
+                className="outlined-type"
+              >
+                AHEAD<span className="acid">.</span>
+              </motion.span>
+            </h1>
+            <motion.div
+              className="hero-bottom"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <p>
+                Security intelligence, engineered for
+                <br />
+                the threats you haven’t seen yet.
+              </p>
+              <div>
+                <MagneticLink href="#simulation">
+                  EXPLORE THE PLATFORM{" "}
+                  <span>
+                    <ArrowUpRight
+                      className="diagonal-arrow"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </MagneticLink>
+                <Link href="/console" className="hero-secondary">
+                  ENTER COMMAND CENTER{" "}
+                  <span>
+                    <ArrowUpRight
+                      className="diagonal-arrow"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+            <div className="hero-baseline">
+              <span>INDEPENDENT DETECTION. INFORMED DECISIONS.</span>
+              <a href="#observe">
+                SCROLL TO DISCOVER <span>↓</span>
+              </a>
+            </div>
+          </section>
+          <section className="story-section" id="observe">
+            <div className="story-overline">
+              <span>01.1 / OBSERVE</span>
+              <span className="story-cross">＋</span>
+            </div>
+            <motion.div
+              initial={{ opacity: 0.25, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.4 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2>
+                EVERY
+                <br />
+                SIGNAL
+                <br />
+                <span className="dim">MATTERS.</span>
+              </h2>
+              <p>
+                A failed login is an observation.
+                <br />A pattern is a reason to investigate.
+                <br />
+                Know the difference.
+              </p>
+              <span className="story-detail">
+                NORMALIZED TELEMETRY / SLIDING-WINDOW DETECTION
+              </span>
+            </motion.div>
+          </section>
+          <section className="story-section">
+            <div className="story-overline">
+              <span>01.2 / UNDERSTAND</span>
+              <span className="story-cross">＋</span>
+            </div>
+            <motion.div
+              initial={{ opacity: 0.25, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.4 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2>
+                INTELLIGENCE
+                <br />
+                IN EVERY
+                <br />
+                <span className="dim">LAYER.</span>
+              </h2>
+              <p>
+                Telemetry. Detection. Correlation.
+                <br />
+                Every layer serves one purpose:
+                <br />a clearer, defensible decision.
+              </p>
+              <span className="story-detail">
+                EVIDENCE RETRIEVAL / NO UNRESTRICTED AI COMMANDS
+              </span>
+            </motion.div>
+          </section>
+          <section className="story-section">
+            <div className="story-overline">
+              <span>01.3 / RESPOND</span>
+              <span className="story-cross">＋</span>
+            </div>
+            <motion.div
+              initial={{ opacity: 0.25, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.4 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2>
+                PRECISION
+                <br />
+                UNDER
+                <br />
+                <span className="dim">PRESSURE.</span>
+              </h2>
+              <p>
+                From a suspicious sequence
+                <br />
+                to a considered response.
+                <br />
+                You remain in command.
+              </p>
+              <span className="story-detail">
+                EXPLICIT APPROVAL / AUDITABLE SIMULATED RESPONSE
+              </span>
+            </motion.div>
+          </section>
+          <section className="story-section story-control">
+            <div className="story-overline">
+              <span>01.4 / CONTROL</span>
+              <span className="story-cross">＋</span>
+            </div>
+            <h2>
+              COMPLETE
+              <br />
+              VISIBILITY.
+              <br />
+              <span className="dim">TOTAL CONTROL.</span>
+            </h2>
+            <p>
+              The story behind every signal.
+              <br />
+              The evidence behind every action.
+            </p>
+            <Link href="/console" className="text-link">
+              OPEN YOUR COMMAND CENTER{" "}
+              <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+            </Link>
+            <div
+              className="control-wireframe"
+              aria-label="Command center structure preview"
+            >
+              <span>COMMAND CENTER / STRUCTURE PREVIEW</span>
+              <div className="wireframe-columns">
+                <div>
+                  EVENTS
+                  <br />
+                  <em>Stored telemetry</em>
+                </div>
+                <div>
+                  INCIDENTS
+                  <br />
+                  <em>Correlated evidence</em>
+                </div>
+                <div>
+                  RESPONSE
+                  <br />
+                  <em>Analyst approved</em>
+                </div>
+              </div>
+              <div className="wireframe-track">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div className="section-divider">
+        <span>THE ADVANTAGE IS IN THE DETAILS.</span>
+        <span>
+          BUILT FOR THE PEOPLE WHO LOOK CLOSER.{" "}
+          <ArrowDownRight className="diagonal-arrow" aria-hidden="true" />
+        </span>
+      </div>
+      <LiveLab />
+      <section className="system-section" id="architecture">
+        <div className="system-heading">
+          <span className="eyebrow">03 / THE SYSTEM BENEATH THE SURFACE</span>
+          <h2>
+            NOT A BLACK BOX.
+            <br />
+            <span className="dim">AN OPEN ARCHITECTURE.</span>
+          </h2>
+          <p>
+            Detection is deterministic. Explanations are grounded.
+            <br />
+            Actions are approved. Explore the chain of trust.
+          </p>
+        </div>
+        <div
+          className="architecture"
+          role="tablist"
+          aria-label="System architecture"
+        >
+          {system.map(([name], i) => (
+            <button
+              id={`architecture-tab-${i}`}
+              role="tab"
+              aria-selected={node === i}
+              aria-controls="architecture-detail"
+              tabIndex={node === i ? 0 : -1}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+                  e.preventDefault();
+                  const next = (i + (e.key === "ArrowRight" ? 1 : 4)) % 5;
+                  setNode(next);
+                  document.getElementById(`architecture-tab-${next}`)?.focus();
+                }
+              }}
+              key={name}
+              className={node === i ? "selected" : ""}
+              onClick={() => setNode(i)}
+            >
+              <small>0{i + 1}</small>
+              <span>{name}</span>
+              <span className="architecture-point" />
+              {i < 4 && (
+                <i
+                  className={
+                    node === i
+                      ? "architecture-wire active"
+                      : "architecture-wire"
+                  }
+                />
+              )}
+            </button>
+          ))}
+        </div>
+        <div
+          className="architecture-detail"
+          id="architecture-detail"
+          role="tabpanel"
+          aria-labelledby={`architecture-tab-${node}`}
+          tabIndex={0}
+        >
+          <span className="architecture-number">0{node + 1}</span>
+          <div>
+            <h3>{system[node][1]}</h3>
+            <p>{system[node][2]}</p>
+          </div>
+          <a
+            href="https://github.com/Debayan-CyberX/AEGIS-X/blob/main/ARCHITECTURE.md"
+            className="text-link"
+          >
+            READ THE TECHNICAL NOTES{" "}
+            <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+          </a>
+        </div>
+      </section>
+      <section className="closing">
+        <span className="eyebrow">FOR THE ONES WHO STAY AHEAD.</span>
+        <h2>
+          YOUR NEXT MOVE.
+          <br />
+          <span className="dim">ALREADY INFORMED.</span>
+        </h2>
+        <MagneticLink href="/console">
+          ENTER AEGIS-X{" "}
+          <span>
+            <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+          </span>
+        </MagneticLink>
+        <div className="closing-caption">
+          <span>
+            LESS NOISE.
+            <br />
+            MORE CERTAINTY.
+          </span>
+          <span>
+            SECURITY, ENGINEERED.
+            <br />
+            INTELLIGENCE, EXPLAINED.
+          </span>
+        </div>
+      </section>
+      <footer className="landing-footer">
+        <Brand />
+        <span>AEGIS-X / THE ART OF STAYING AHEAD.</span>
+        <a href="https://github.com/Debayan-CyberX/AEGIS-X">
+          SOURCE & DOCUMENTATION{" "}
+          <ArrowUpRight className="diagonal-arrow" aria-hidden="true" />
+        </a>
+        <a href="#product">BACK TO TOP ↑</a>
+      </footer>
+    </main>
+  );
+}
