@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Brand(){return <Link className="brand" href="/" aria-label="AEGIS-X home"><svg viewBox="0 0 40 44" width="34" height="38" fill="none"><path d="M20 2 37 10v14L20 42 3 24V10L20 2Z" stroke="currentColor" strokeWidth="2"/><path d="m11 28 9-17 9 17M15 23h10" stroke="currentColor" strokeWidth="2.5"/></svg><span>AEGIS<span className="cyan">-X</span><small>SECURITY INTELLIGENCE</small></span></Link>}

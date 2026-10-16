@@ -1,0 +1,1 @@
+[{"hostname":"warehouse-inventory","cve":"CVE-2021-44228","cvss":10.0,"software":"Apache Log4j 2.14.1 (synthetic inventory)","remediation":"Demonstration only: upgrade to a currently supported vendor-patched release and verify removal of vulnerable components.","synthetic":true}]

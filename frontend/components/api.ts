@@ -1,0 +1,3 @@
+export async function api<T=any>(path:string,options:RequestInit={}):Promise<T>{const r=await fetch(`/api${path}`,{...options,credentials:"include",headers:{"Content-Type":"application/json",...options.headers}});if(!r.ok){const data=await r.json().catch(()=>({detail:"Backend unavailable"}));throw new Error(typeof data.detail==="string"?data.detail:`Request failed (${r.status})`)}return r.json()}
+export const post=(path:string,body:unknown={})=>api(path,{method:"POST",body:JSON.stringify(body)});
+export type Incident={id:number;title:string;severity:string;status:string;hostname:string;source_ip:string;rule_id:string;score:number;created_at:string;synthetic:boolean;events?:any[];rule?:any;notes?:any[];responses?:any[]};
