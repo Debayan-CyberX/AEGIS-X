@@ -136,3 +136,7 @@ Read [SECURITY.md](SECURITY.md) before deployment. This is a single-workspace pr
 Windows commands are documented but have not been run on a Windows host. PostgreSQL, container, Linux, build, and browser validation are reported separately in the checkpoint. Next work: durable workers/Redis fanout, multi-tenant boundaries, MFA, ingestion authentication, authorized integration adapters, historical posture measurements, structured AI-output evaluation, and broader browser accessibility tests.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) and the five-minute [INTERVIEW_DEMO.md](INTERVIEW_DEMO.md).
+
+## Author and portfolio
+
+Technical implementation by **Debayan Lahiry**. [Portfolio and project case study](https://debayan-cyberx.github.io/Deb-s-Portfolio.github.io/#project-aegis). The existing architecture, interview walkthrough, security limitations, and checkpoint above describe the implemented scope and validation.
