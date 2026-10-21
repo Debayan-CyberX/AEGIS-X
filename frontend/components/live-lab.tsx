@@ -22,6 +22,10 @@ export default function LiveLab() {
   const [approve, setApprove] = useState(false);
   const [result, setResult] = useState("");
   useEffect(() => {
+    if (process.env.NEXT_PUBLIC_APP_URL) {
+      setChecked(true);
+      return;
+    }
     let active = true;
     api("/auth/me")
       .then(async (u) => {

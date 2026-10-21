@@ -86,7 +86,16 @@ const Badge = ({ value }: { value: string }) => (
     {value}
   </span>
 );
-export default function Console() {
+export default function ConsolePage() {
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+  useEffect(() => {
+    if (appUrl) window.location.replace(`${appUrl}/console/${window.location.search}`);
+  }, [appUrl]);
+  if (appUrl) return <main className="page-shell"><p>Opening the hosted command center…</p><a href={`${appUrl}/console/`}>Open command center</a></main>;
+  return <Console />;
+}
+
+function Console() {
   const qc = useQueryClient();
   const reducedMotion = useReducedMotion();
   const { page, setPage } = useUI();
@@ -180,7 +189,9 @@ export default function Console() {
     const open = () => {
       const url =
         process.env.NEXT_PUBLIC_WS_URL ||
-        `${location.protocol === "https:" ? "wss" : "ws"}://${location.hostname}:8000/ws`;
+        (process.env.NEXT_PUBLIC_SAME_ORIGIN_API === "true"
+          ? `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/api/ws`
+          : `${location.protocol === "https:" ? "wss" : "ws"}://${location.hostname}:8000/ws`);
       ws = new WebSocket(url);
       ws.onopen = () => setConnected(true);
       ws.onmessage = (e) => {
